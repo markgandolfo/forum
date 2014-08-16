@@ -26,6 +26,8 @@ gem 'bb-ruby'
 gem 'devise'
 gem 'cancan'
 
+gem 'kaminari'
+
 group :development do
   gem 'foreman'
 
