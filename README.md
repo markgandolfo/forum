@@ -17,11 +17,19 @@ I started it while getting my wisdom teeth out, and it most likely won't go anyw
 
 Colours need to be fixed (http://www.paletton.com/#uid=13G0u0kp2lDgdu9lapntohmBvbZ) as a base pallet
 
+### What's it do?
+
+1. Admin/members (still loads of work needed here)
+1. Admin can create sections
+1. Can create posts
+1. can reply to posts
+1. a little bit responsive
+1. Pagination
+
 ### What's to come?
 
 A lot.
 
-1. Pagination
 1. Smart SEO defaults
 1. Inline replies
 1. WYSIWYG
