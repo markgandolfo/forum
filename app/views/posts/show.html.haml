@@ -20,4 +20,6 @@
 
 = paginate @replies
 
-= link_to 'Reply', new_post_reply_path(@post)
+= link_to new_post_reply_path(@post), class:'btn btn-default btn-blue' do
+  %span.glyphicon.glyphicon-plus
+  Add a Reply
