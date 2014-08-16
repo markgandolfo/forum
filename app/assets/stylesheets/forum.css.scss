@@ -85,3 +85,36 @@ body {
         padding: 10px 0;
     }
 }
+
+.section-heading {
+    background: $head-background;
+    border: 0 1px solid $head-border-color;
+
+    h1 {
+        font-size: 1.3em;
+        color: #ffffff;
+        text-transform: capitalize;
+        margin-top: 10px;
+    }
+
+    p {
+        color: #ffffff;
+        margin-top: -10px;
+    }
+}
+
+.btn {
+    margin: 10px 0;
+}
+
+.btn-blue {
+    background: #355486;
+    color: #FFFFFF;
+    text-shadow: 0 1px 0 #56729F;
+
+    &:hover {
+        background: #304C79;
+        color: #FFFFFF
+    }
+}
+

@@ -1,10 +1,12 @@
-.row
+.section-heading.row
   .col-xs-12
-    = @section.title
+    %h1= @section.title
   .col-xs-12
-    = @section.description
+    %p= @section.description
 
-= link_to 'New Post', new_section_post_path(@section)
+= link_to new_section_post_path(@section), class:'btn btn-default btn-blue' do
+  %span.glyphicon.glyphicon-plus
+  Add New Post
 
 .posts
   .head.row
