@@ -1,0 +1,19 @@
+%table.table
+  %tr
+    %th Title
+    %th Description
+    %th Order
+    %th Category
+    %th
+
+  - @sections.each do |section|
+    %tr
+      %td= section.title
+      %td= section.description
+      %td= section.order
+      %td= section.category
+      %td
+        = link_to 'Edit', edit_admin_section_path(section)
+        = link_to 'Destroy', admin_section_path(section), method: :delete, data: { confirm: 'Are you sure?' }
+
+= link_to 'New Section', new_admin_section_path

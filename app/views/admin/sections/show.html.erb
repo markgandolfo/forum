@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @section.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @section.description %>
+</p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @section.order %>
+</p>
+
+<p>
+  <strong>Section:</strong>
+  <%= @section.section %>
+</p>
+
+<%= link_to 'Edit', edit_admin_section_path(@section) %> |
+<%= link_to 'Back', admin_sections_path %>

@@ -1,0 +1,14 @@
+.post.box.first
+  .head.row
+    .col-xs-12
+      = reply.title
+      .pull-right
+        = reply.created_at
+  .main.row
+    .container.col-xs-4
+      .content
+        = reply.user.email
+        = reply.user.created_at
+    .body-container.col-xs-8
+      .content
+        = reply.body

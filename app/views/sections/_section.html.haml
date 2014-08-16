@@ -1,0 +1,24 @@
+.body
+  .content
+    .hidden-xs.hidden-sm.col-md-1.col-lg-1
+      =link_to( image_tag("http://www.placekitten.com/g/40/40"), section_path(section))
+    .col-xs-7.col-sm-7.col-md-6.col-lg-6.description
+      = link_to section.title, section_path(section)
+      %br
+      = section.description
+    .hidden-xs.col-sm-2.col-md-2.col-lg-2
+      Threads:
+      = section.posts.count
+      %br
+      Posts:
+      = section.get_replies_count
+    .hidden-xs.col-sm-3.col-md-3.col-lg-3
+      - if section.posts.last
+        = link_to truncate(section.posts.last.title, length: 25), section_post_path(section, section.posts.last)
+        %br
+        by
+        = link_to truncate(section.posts.last.user.email, length: 25), profile_path(section.posts.last.user)
+        %br
+        = section.posts.last.created_at
+      -else
+        No Post

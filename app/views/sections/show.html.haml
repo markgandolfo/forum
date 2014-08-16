@@ -1,0 +1,32 @@
+.row
+  .col-xs-12
+    = @section.title
+  .col-xs-12
+    = @section.description
+
+= link_to 'New Post', new_section_post_path(@section)
+
+.posts
+  .head.row
+    .col-xs-12
+      .col-xs-6.col-xs-offset-1
+        Post Title
+      .col-xs-2
+        Replies
+      .col-xs-3
+        Last Post
+  - @section.posts.each do |post|
+    .row.post
+      .col-xs-12
+        .col-xs-1
+          %img{src: "http://www.placekitten.com/g/40/40"}/
+        .col-xs-6
+          = link_to post.title, section_post_path(@section, post)
+        .col-xs-2
+          = post.replies_count
+        .col-xs-3
+          - if post.replies.count > 0
+            = link_to post.replies.last.user.email, profile_path(post.replies.last.user)
+          -else
+            No Post
+  %hr

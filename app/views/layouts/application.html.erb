@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="ROBOTS" content="NOODP" />
+  <title><%= title %></title>
+  <%= stylesheet_link_tag :application, :media => 'all' %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="<%= body_class %>">
+  <div class="masthead">
+    <div class="container box">
+      <nav class="forum-nav">
+        <a href="/">Home</a>
+        <div class="pull-right">
+          <% if user_signed_in? %>
+            <%= render 'layouts/header_signed_in' %>
+          <% else %>
+            <%= render 'layouts/header_signed_out' %>
+          <% end %>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 forum-main">
+        <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
+
+        <%= yield %>
+        <%= render 'javascript' %>
+      </div>
+
+      <div class="hidden-xs hidden-sm col-md-3 col-lg-3 sidebar">
+        <div class="sidebar-module sidebar-module-inset">
+          <img src="http://www.placekitten.com/300/250" />
+        </div>
+        <div class="sidebar-module">
+        </div>
+        <div class="sidebar-module">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="blog-footer">
+      Forum &copy;
+    </div>
+  </div>
+</body>
+</html>

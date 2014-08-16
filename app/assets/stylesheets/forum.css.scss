@@ -1,0 +1,87 @@
+$head-background: #214072;
+$head-border-color: #5A7F97;
+$head-color: #ffffff;
+
+body {
+    font-size: 12px;
+}
+
+.box {
+     margin-bottom: 10px;
+}
+
+.post, .reply {
+    .head {
+        background: $head-background;
+        border: 1px solid $head-border-color;
+        font: normal 12px Tahoma,Calibri,Verdana,Geneva,sans-serif;
+        color: $head-color;
+        padding: 4px 0;
+    }
+
+    .main {
+        background: #f2f6f8 none;
+
+        .body-container {
+            color: rgb(51, 51, 51);
+            border-left: 1px solid #efefef;
+            background: #fafafa none;
+        }
+
+        .content {
+            padding: 10px;
+        }
+
+    }
+}
+
+.category  {
+    margin-bottom: 20px;
+}
+
+.section {
+
+    .header {
+        background: #214072;
+        font: bold 12px Arial, Tahoma,Calibri,Verdana,Geneva,sans-serif;
+        color: #ffffff;
+        border: 1px solid #5a7f97;
+        padding: 5px 10px;
+        margin-top: 10px;
+    }
+
+    .body {
+        background: #fafafa none;
+        border-bottom: 1px solid #c4c4c4;
+
+        .description {
+            padding: 0 5px;
+        }
+    }
+
+    .content {
+        padding: 10px 0px;
+        overflow: hidden;
+    }
+
+}
+
+.posts {
+
+    background: #fafafa;
+    overflow: hidden;
+
+    .head {
+        font-size: 1.2em;
+        font-weight: bold;
+        background-color: $head-background;
+        border: 1px solid $head-border-color;
+        color: $head-color;
+        padding: 4px 0;
+    }
+
+    .post {
+        border-bottom: 1px solid #c4c4c4;
+        padding: 10px 0;
+    }
+}

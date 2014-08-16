@@ -1,0 +1,32 @@
+!!! 5
+
+%html
+  %head
+    %title Forum Admin
+    = stylesheet_link_tag :application, :media => 'all'
+  %body
+    .row.masthead
+      .container
+        %nav.blog-nav
+          %a.blog-nav-item.active{href: "#"} Home
+          %a.blog-nav-item{href: "#"} New features
+          %a.blog-nav-item{href: "#"} Press
+          %a.blog-nav-item{href: "#"} New hires
+          %a.blog-nav-item{href: "#"} About
+    %br
+
+    .row.container
+      .row
+        .col-sm-3.blog-sidebar
+          .sidebar-module.sidebar-module-inset
+            %img{src: "http://www.placekitten.com/g/300/250"}/
+          .sidebar-module
+          .sidebar-module
+        .col-sm-8.blog-main.col-sm-offset-1
+          = render 'flashes'
+          - if notice
+            %p.alert.alert-success= notice
+          - if alert
+            %p.alert.alert-danger= alert
+          = yield
+          = render 'javascript'
