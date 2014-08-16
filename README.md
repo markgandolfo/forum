@@ -22,6 +22,7 @@ Colours need to be fixed (http://www.paletton.com/#uid=13G0u0kp2lDgdu9lapntohmBv
 A lot.
 
 1. Pagination
+1. Smart SEO defaults
 1. Inline replies
 1. WYSIWYG
 1. An admin that can manage, users, posts, replies, etc.
