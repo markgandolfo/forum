@@ -16,7 +16,7 @@
       Replies
     .hidden-xs.col-sm-2.col-md-2.col-lg-2
       Last Post
-  - @section.posts.each do |post|
+  - @posts.each do |post|
     .row.post
       .col-xs-1
         %img{src: "http://www.placekitten.com/g/20/20"}/
@@ -29,4 +29,5 @@
           = link_to post.replies.last.user.email, profile_path(post.replies.last.user)
         -else
           No Post
+  = paginate @posts
   %hr
