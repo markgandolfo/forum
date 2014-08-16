@@ -39,3 +39,7 @@ A lot.
 1. Subscription to sections
 1. Proper email management
 1. Banned Users
+
+### License
+
+Release under MIT
