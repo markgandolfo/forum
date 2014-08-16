@@ -13,6 +13,10 @@ I started it while getting my wisdom teeth out, and it most likely won't go anyw
     rake db:migrate
     rake db:seed  # to set seed data
 
+### Some notes so far:
+
+Colours need to be fixed (http://www.paletton.com/#uid=13G0u0kp2lDgdu9lapntohmBvbZ) as a base pallet
+
 ### What's to come?
 
 A lot.
@@ -20,7 +24,7 @@ A lot.
 1. Pagination
 1. Inline replies
 1. WYSIWYG
-1. An admin that can manage, users, posts, replies, etc. 
+1. An admin that can manage, users, posts, replies, etc.
 1. Sticky Threads
 1. Close Threads
 1. Askimet Integration (spam management)
