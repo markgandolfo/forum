@@ -16,6 +16,8 @@
         = @post.body
 
 .replies
-  = render partial: 'replies/reply', collection: @post.replies
+  = render partial: 'replies/reply', collection: @replies
+
+= paginate @replies
 
 = link_to 'Reply', new_post_reply_path(@post)

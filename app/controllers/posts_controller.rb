@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1
   def show
+    @replies = @post.replies.page(params[:page])
   end
 
   # GET /posts/new
