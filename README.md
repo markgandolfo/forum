@@ -8,6 +8,8 @@ I started it while getting my wisdom teeth out, and it most likely won't go anyw
 
 ### How can I get it working?
 
+I use mocksmtp for development emails. If you don't have it, update the `config/development.rb` and change the mail settings to whatever you need
+
     bundle
     rake db:create
     rake db:migrate
