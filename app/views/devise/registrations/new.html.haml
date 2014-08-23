@@ -1,10 +1,69 @@
 %h2 Sign up
-= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = f.error_notification
-  .form-inputs
-    = f.input :email, required: true, autofocus: true
-    = f.input :password, required: true
-    = f.input :password_confirmation, required: true
-  .form-actions
-    = f.button :submit, "Sign up"
+= form_for(resource, as: resource_name, url: registration_path(resource_name), html:{class:'form'}) do |f|
+  .form-group.row
+    .col-xs-12
+      = f.label :email
+      = f.text_field :email, required: true, autofocus: true, class:'form-control'
+
+    .col-xs-12
+      = f.label :username
+      = f.text_field :username, required: true, class: 'form-control'
+
+    .col-xs-12
+      = f.label :password
+      = f.text_field :password, required: true, class:'form-control'
+
+    .col-xs-12
+      = f.label :password_confirmation
+      = f.text_field :password_confirmation, required: true, class:'form-control'
+
+    .col-xs-12
+      = f.label :homepage
+      = f.text_field :homepage, class:'form-control'
+
+    .col-xs-12
+      .input-group
+        = f.label :dob, "Date of Birth"
+        .checkbox
+          = f.date_select :dob, html_options: {class: "form-control"}
+
+    .col-xs-12
+      = f.label :referrer
+      = f.text_field :referrer, class:'form-control'
+
+    .col-xs-12
+      = f.label :location
+      = f.text_field :location, class:'form-control'
+
+    .col-xs-12
+      = f.label :sex
+      .radios
+        = f.radio_button :sex, "Male", class:'optionsRadios'
+        Male
+        = f.radio_button :sex, "Female", class:'optionsRadios'
+        Female
+
+    .col-xs-12
+      = f.label :occupation
+      = f.text_field :occupation, class:'form-control'
+
+    .col-xs-12
+      = f.label :ride
+      = f.text_field :ride, class:'form-control'
+
+    .col-xs-12
+      = f.label :marketing, 'How did you hear about us?'
+      = f.text_field :marketing, class:'form-control'
+
+    .col-xs-12
+      = f.label :third_party_opt_in, "Can our partners contact you?"
+      .radios
+        = f.radio_button :third_party_opt_in, "Yes", class:'optionsRadios'
+        Yes
+        = f.radio_button :third_party_opt_in, "No", class:'optionsRadios'
+        No
+
+    .col-xs-12
+      = f.submit 'Register', class:'btn btn-default btn-blue'
+
 = render "devise/shared/links"
