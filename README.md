@@ -27,13 +27,13 @@ Colours need to be fixed (http://www.paletton.com/#uid=13G0u0kp2lDgdu9lapntohmBv
 1. can reply to posts
 1. a little bit responsive
 1. Pagination
+1. Inline replies
 
 ### What's to come?
 
 A lot.
 
 1. Smart SEO defaults
-1. Inline replies
 1. WYSIWYG
 1. An admin that can manage, users, posts, replies, etc.
 1. Sticky Threads

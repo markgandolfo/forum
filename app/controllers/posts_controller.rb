@@ -11,6 +11,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   def show
     @replies = @post.replies.page(params[:page])
+    @reply = Reply.new
   end
 
   # GET /posts/new

@@ -23,6 +23,7 @@ body {
         background: #f2f6f8 none;
 
         .body-container {
+            min-height: 100px;
             color: rgb(51, 51, 51);
             border-left: 1px solid #efefef;
             background: #fafafa none;
@@ -31,8 +32,8 @@ body {
         .content {
             padding: 10px;
         }
-
     }
+
 }
 
 .category  {
@@ -117,3 +118,8 @@ body {
     }
 }
 
+.forum-main {
+    #reply_body {
+        height: 120px;
+    }
+}
