@@ -1,0 +1,15 @@
+= form_for([@post, @reply], html:{class:'form'}) do |f|
+  - if @reply.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@reply.errors.count, "error")
+        prohibited this reply from being saved:
+      %ul
+        - @reply.errors.full_messages.each do |message|
+          %li= message
+
+  .form-group
+    = f.label 'body', "Post a Reply", class:'form-control'
+    = f.text_area :body, class:'form-control'
+  .actions
+    = f.submit "Submit a Reply", class:'btn btn-default btn-blue'
