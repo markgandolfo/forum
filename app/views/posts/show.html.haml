@@ -3,9 +3,8 @@
 .post.box.first
   .head.row
     .col-xs-12
-      = @post.title
-      .pull-right
-        = @post.created_at
+      .pull-left= @post.title
+      .pull-right= @post.created_at
   .main.row
     .container.col-xs-4
       .content

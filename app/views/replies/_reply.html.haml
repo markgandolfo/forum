@@ -1,9 +1,8 @@
 .post.box.first
   .head.row
     .col-xs-12
-      = reply.title
-      .pull-right
-        = reply.created_at
+      .pull-left= reply.title
+      .pull-right.hidden-xs= reply.created_at
   .main.row
     .container.col-xs-4
       .content
