@@ -2,11 +2,9 @@
 
 FactoryGirl.define do
   factory :post do
-    post nil
     title "MyString"
     body "MyText"
-    user nil
-    closed false
-    stick false
+    association :user
+    association :section
   end
 end

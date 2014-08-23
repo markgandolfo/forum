@@ -5,6 +5,6 @@ FactoryGirl.define do
     title "MyString"
     description "MyText"
     order 1
-    section nil
+    category "Category"
   end
 end
