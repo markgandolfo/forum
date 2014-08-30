@@ -3,6 +3,8 @@ class PostsController < ApplicationController
   before_action :set_section, only: [:new, :edit, :update, :create, :destroy]
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
 
+  load_and_authorize_resource
+
   # GET /posts
   def index
     @posts = Post.all

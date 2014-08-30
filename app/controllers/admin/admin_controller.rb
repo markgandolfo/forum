@@ -1,5 +1,6 @@
 class Admin::AdminController < ApplicationController
   before_action :authenticate_user!
+  load_and_authorize_resource
 
   def authenticate_user!
     unless user_signed_in? && current_user.role == 'admin'

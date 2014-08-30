@@ -1,8 +1,5 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
@@ -21,5 +18,20 @@ class ApplicationController < ActionController::Base
         :post_count, :biography, :location, :sex, :occupation, :ride, :marketing,
         :third_party_opt_in, :timezone)
     end
+  end
+
+  # Required for cancan abilities
+  def namespace
+    controller_name_segments = params[:controller].split('/')
+    controller_name_segments.pop
+    controller_name_segments.join('/').camelize
+  end
+
+  def current_ability
+    Ability.new(current_user, namespace)
+  end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    abort("#{current_user.role} - #{exception.message}")
   end
 end

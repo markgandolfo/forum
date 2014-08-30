@@ -2,6 +2,8 @@ class RepliesController < ApplicationController
   before_action :set_reply, only: [:show, :edit, :update, :destroy]
   before_action :set_post
 
+  load_and_authorize_resource
+
   # GET /replies/new
   def new
     @reply = Reply.new

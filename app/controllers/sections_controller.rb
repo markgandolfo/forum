@@ -1,4 +1,5 @@
 class SectionsController < ApplicationController
+  load_and_authorize_resource
 
   # GET /sections
   def index
