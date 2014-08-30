@@ -28,6 +28,8 @@ Colours need to be fixed (http://www.paletton.com/#uid=13G0u0kp2lDgdu9lapntohmBv
 1. a little bit responsive
 1. Pagination
 1. Inline replies
+1. Extended User model fields
+1. CanCan Integration
 
 ### What's to come?
 
@@ -41,7 +43,6 @@ A lot.
 1. Askimet Integration (spam management)
 1. What's new (since last visit)
 1. Better caching, memoization, memcached, etc. etc.
-1. Extended User model fields
 1. User profiles
 1. Gravatar/profile integration
 1. Omniauth
