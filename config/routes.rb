@@ -1,7 +1,6 @@
 Forum::Application.routes.draw do
+  resources :profiles, only: [:index, :show], controller: 'users'
   devise_for :users
-
-  resources :profiles, only: [:index, :show]
 
   resources :sections, only: [:index, :show] do
     resources :posts
