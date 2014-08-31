@@ -1,6 +1,7 @@
 $head-background: #214072;
 $head-border-color: #5A7F97;
 $head-color: #ffffff;
+$background-color: #fafafa;
 
 body {
     font-size: 12px;
@@ -55,7 +56,7 @@ body {
     }
 
     .body {
-        background: #fafafa none;
+        background: $background-color;
         border-bottom: 1px solid #c4c4c4;
 
         .description {
@@ -106,7 +107,7 @@ body {
 
 .section-list {
 
-    background: #fafafa;
+    background: $background-color;
     overflow: hidden;
 
     .head {
@@ -173,4 +174,11 @@ body {
 
 .offset-column {
     margin-left: -15px;
+}
+
+
+form {
+    background: $background-color;
+    padding: 10px 20px;
+    border-radius: 0px 0px 5px 5px;
 }
