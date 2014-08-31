@@ -9,13 +9,13 @@
     .main.row
       .col-xs-12
         .body-container
-          .col-xs-4
-            .content
+          .col-xs-12.col-sm-4.col-md-4.col-lg-4
+            .offset-column
               .col-xs-12
                 = @post.user.email
-              .col-xs-12
+              .visible-sm.col-xs-12
                 = @post.user.created_at
-          .col-xs-8.body-container
+          .col-xs-12.col-sm-8.col
             .content
               = @post.body
 
