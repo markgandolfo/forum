@@ -4,6 +4,7 @@ $head-color: #ffffff;
 
 body {
     font-size: 12px;
+    background: #e9e9e9 url(http://aussiev8.com.au/images/aussiev8/misc/doc_bg.png) repeat 0 0;
 }
 
 .box {
@@ -27,7 +28,7 @@ body {
             min-height: 100px;
             color: rgb(51, 51, 51);
             border-left: 1px solid #efefef;
-            background: #fafafa none;
+            background: #fafafa;
             overflow: auto;
         }
 
@@ -71,6 +72,8 @@ body {
 
 .post-list {
 
+    overflow: hidden;
+
     .head {
         font-size: 1.1em;
         font-weight: bold;
@@ -81,9 +84,49 @@ body {
         padding: 5px 0;
     }
 
-    .post {
+    .main.row {
         border-bottom: 1px solid #c4c4c4;
-        margin: 10px 0;
+        // padding: 5px;
+    }
+
+    .body-container {
+        padding: 10px 0;
+        overflow: hidden;
+
+        img {
+            padding-left: 5px;
+        }
+    }
+
+}
+
+.section-list {
+
+    background: #fafafa;
+    overflow: hidden;
+
+    .head {
+        font-size: 1.1em;
+        font-weight: bold;
+        background-color: $head-background;
+        border: 1px solid $head-border-color;
+        color: $head-color;
+        margin: 0;
+        padding: 5px 0;
+    }
+
+    .main.row {
+        border-bottom: 1px solid #c4c4c4;
+        // padding: 5px;
+    }
+
+    .body-container {
+        padding: 10px 0;
+        overflow: hidden;
+
+        img {
+            padding-left: 5px;
+        }
     }
 }
 

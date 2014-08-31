@@ -11,8 +11,10 @@
         .body-container
           .col-xs-4
             .content
-              = @post.user.email
-              = @post.user.created_at
+              .col-xs-12
+                = @post.user.email
+              .col-xs-12
+                = @post.user.created_at
           .col-xs-8.body-container
             .content
               = @post.body
