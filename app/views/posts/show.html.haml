@@ -1,23 +1,26 @@
 %p#notice= notice
 
-.post.box.first
-  .head.row
-    .col-xs-12
-      .pull-left= @post.title
-      .pull-right= @post.created_at
-  .main.row
-    .container.col-xs-4
-      .content
-        = @post.user.email
-        = @post.user.created_at
-    .body-container.col-xs-8
-      .content
-        = @post.body
+.post-list
+  .post.box.first
+    .head.row
+      .col-xs-12
+        .pull-left= @post.title
+        .pull-right= @post.created_at
+    .main.row
+      .col-xs-12
+        .body-container
+          .col-xs-4
+            .content
+              = @post.user.email
+              = @post.user.created_at
+          .col-xs-8.body-container
+            .content
+              = @post.body
 
-.replies
-  = render partial: 'replies/reply', collection: @replies
+  .replies
+    = render partial: 'replies/reply', collection: @replies
 
-= paginate @replies
+  = paginate @replies
 
 .row
 = render partial: 'replies/form'

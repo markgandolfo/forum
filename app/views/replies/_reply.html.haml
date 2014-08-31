@@ -2,12 +2,14 @@
   .head.row
     .col-xs-12
       .pull-left= reply.title
-      .pull-right.hidden-xs= reply.created_at
+      .pull-right= reply.created_at
   .main.row
-    .container.col-xs-4
-      .content
-        = reply.user.email
-        = reply.user.created_at
-    .body-container.col-xs-8
-      .content
-        = reply.body
+    .col-xs-12
+      .body-container
+        .col-xs-4
+          .content
+            = reply.user.email
+            = reply.user.created_at
+        .col-xs-8.body-container
+          .content
+            = reply.body
