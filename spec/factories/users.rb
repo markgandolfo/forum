@@ -2,9 +2,15 @@
 
 FactoryGirl.define do
   factory :user do
-    username                "Test User"
-    email                   "user@example.com"
-    password                "password"
-    password_confirmation   "password"
+    username                Faker::Internet.user_name
+    email                   Faker::Internet.safe_email
+    password                "Password1"
+    password_confirmation   "Password1"
+    role                    "member"
   end
+
+  factory :admin_user, :parent => :user do
+    role                    "admin"
+  end
+
 end
