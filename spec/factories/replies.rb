@@ -2,9 +2,9 @@
 
 FactoryGirl.define do
   factory :reply do
-    title "MyString"
-    body "MyText"
-    post nil
-    user nil
+    title Faker::Lorem.words(4).join(' ')
+    body Faker::Lorem.words(20).join(' ')
+    association :post
+    association :user
   end
 end

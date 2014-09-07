@@ -20,11 +20,19 @@ require 'rails_helper'
 
 RSpec.describe RepliesController, :type => :controller do
 
+  before(:each) do
+    @section = FactoryGirl.create(:section)
+    @post = @section.posts.create(FactoryGirl.attributes_for(:post))
+    @reply = @post.replies.create(FactoryGirl.attributes_for(:reply))
+
+    allow(Section).to receive_messages(find: @section)
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # Reply. As you add validations to Reply, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    attributes_for(:reply)
   }
 
   let(:invalid_attributes) {
@@ -36,25 +44,17 @@ RSpec.describe RepliesController, :type => :controller do
   # RepliesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  describe "GET index" do
-    it "assigns all replies as @replies" do
-      reply = Reply.create! valid_attributes
-      get :index, {}, valid_session
-      expect(assigns(:replies)).to eq([reply])
-    end
-  end
-
   describe "GET show" do
     it "assigns the requested reply as @reply" do
       reply = Reply.create! valid_attributes
-      get :show, {:id => reply.to_param}, valid_session
+      get :show, {:id => reply.to_param, post_id: @post.to_param}, valid_session
       expect(assigns(:reply)).to eq(reply)
     end
   end
 
   describe "GET new" do
     it "assigns a new reply as @reply" do
-      get :new, {}, valid_session
+      get :new, {post_id: @post.to_param}, valid_session
       expect(assigns(:reply)).to be_a_new(Reply)
     end
   end
@@ -62,28 +62,30 @@ RSpec.describe RepliesController, :type => :controller do
   describe "GET edit" do
     it "assigns the requested reply as @reply" do
       reply = Reply.create! valid_attributes
-      get :edit, {:id => reply.to_param}, valid_session
+      get :edit, {:id => reply.to_param, post_id: @post.to_param}, valid_session
       expect(assigns(:reply)).to eq(reply)
     end
   end
 
   describe "POST create" do
     describe "with valid params" do
+      login_user
+
       it "creates a new Reply" do
         expect {
-          post :create, {:reply => valid_attributes}, valid_session
+          post :create, {:reply => valid_attributes, post_id: @post.to_param}, valid_session
         }.to change(Reply, :count).by(1)
       end
 
       it "assigns a newly created reply as @reply" do
-        post :create, {:reply => valid_attributes}, valid_session
+        post :create, {:reply => valid_attributes, post_id: @post.to_param}, valid_session
         expect(assigns(:reply)).to be_a(Reply)
         expect(assigns(:reply)).to be_persisted
       end
 
       it "redirects to the created reply" do
-        post :create, {:reply => valid_attributes}, valid_session
-        expect(response).to redirect_to(Reply.last)
+        post :create, {:reply => valid_attributes, post_id: @post.to_param}, valid_session
+        expect(response).to redirect_to(@post)
       end
     end
 
@@ -102,31 +104,38 @@ RSpec.describe RepliesController, :type => :controller do
 
   describe "PUT update" do
     describe "with valid params" do
+      login_user
+
+      before(:each) do
+        @reply.update_attribute(:user_id, User.first.id)
+      end
+
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {
+          body: Faker::Lorem.words(rand(5..60), false).join(' ') }
       }
 
       it "updates the requested reply" do
-        reply = Reply.create! valid_attributes
-        put :update, {:id => reply.to_param, :reply => new_attributes}, valid_session
-        reply.reload
-        skip("Add assertions for updated state")
+        put :update, {:id => @reply.to_param, post_id: @post.to_param, :reply => new_attributes}, valid_session
+        @reply.reload
+
+        expect(@reply.body).to eq(new_attributes[:body])
       end
 
       it "assigns the requested reply as @reply" do
-        reply = Reply.create! valid_attributes
-        put :update, {:id => reply.to_param, :reply => valid_attributes}, valid_session
-        expect(assigns(:reply)).to eq(reply)
+        put :update, {:id => @reply.to_param, :reply => valid_attributes, post_id: @post.to_param}, valid_session
+        expect(assigns(:reply)).to eq(@reply)
       end
 
       it "redirects to the reply" do
-        reply = Reply.create! valid_attributes
-        put :update, {:id => reply.to_param, :reply => valid_attributes}, valid_session
-        expect(response).to redirect_to(reply)
+        put :update, {:id => @reply.to_param, :reply => valid_attributes, post_id: @post.to_param}, valid_session
+        expect(response).to redirect_to(@post)
       end
     end
 
     describe "with invalid params" do
+      login_user
+
       it "assigns the reply as @reply" do
         reply = Reply.create! valid_attributes
         put :update, {:id => reply.to_param, :reply => invalid_attributes}, valid_session
@@ -142,17 +151,25 @@ RSpec.describe RepliesController, :type => :controller do
   end
 
   describe "DELETE destroy" do
-    it "destroys the requested reply" do
-      reply = Reply.create! valid_attributes
-      expect {
-        delete :destroy, {:id => reply.to_param}, valid_session
-      }.to change(Reply, :count).by(-1)
-    end
+    describe "as admin user" do
+      login_user('admin')
 
-    it "redirects to the replies list" do
-      reply = Reply.create! valid_attributes
-      delete :destroy, {:id => reply.to_param}, valid_session
-      expect(response).to redirect_to(replies_url)
+      before(:each) do
+        @reply.update_attribute(:user_id, User.first.id)
+      end
+
+      it "destroys the requested reply" do
+        expect {
+          delete :destroy, {:id => @reply.to_param, post_id: @post.to_param}, valid_session
+        }.to change(Reply, :count).by(-1)
+      end
+
+      it "redirects to the replies list" do
+        puts "#{@reply.inspect}"
+        puts "#{@post.inspect}"
+        delete :destroy, {:id => @reply.to_param, post_id: @post.to_param}, valid_session
+        expect(response).to redirect_to(@post)
+      end
     end
   end
 

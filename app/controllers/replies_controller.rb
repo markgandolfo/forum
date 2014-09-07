@@ -29,7 +29,7 @@ class RepliesController < ApplicationController
   # PATCH/PUT /replies/1
   def update
     if @reply.update(reply_params)
-      redirect_to @reply, notice: 'Reply was successfully updated.'
+      redirect_to post_path(@reply.post), notice: 'Reply was successfully updated.'
     else
       render :edit
     end
@@ -38,7 +38,7 @@ class RepliesController < ApplicationController
   # DELETE /replies/1
   def destroy
     @reply.destroy
-    redirect_to replies_url, notice: 'Reply was successfully destroyed.'
+    redirect_to post_path(@post), notice: 'Reply was successfully destroyed.'
   end
 
   private
