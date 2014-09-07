@@ -51,6 +51,7 @@ A lot.
 1. Proper email management
 1. Banned Users
 1. Make all views haml
+1. private messaging between users
 
 ### License
 
