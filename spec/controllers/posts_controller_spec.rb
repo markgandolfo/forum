@@ -69,7 +69,7 @@ RSpec.describe PostsController, :type => :controller do
   end
 
   describe "GET edit" do
-    login_user
+    login_user('admin')
 
     it "assigns the requested post as @post" do
       get :edit, {id: @post.to_param, section_id: @post.section.to_param}, valid_session
@@ -115,6 +115,10 @@ RSpec.describe PostsController, :type => :controller do
   describe "PUT update" do
     login_user
 
+    before(:each) do
+      @post.update_attribute(:user_id, User.first.id)
+    end
+
     describe "with valid params" do
       let(:new_attributes) {
         { title: Faker::Lorem.words(rand(4..10), false).join(' '),
@@ -130,7 +134,7 @@ RSpec.describe PostsController, :type => :controller do
       end
 
       it "assigns the requested post as @post" do
-        put :update, {id: @post.to_param, section_id: @post.section.to_param, post: valid_attributes}, valid_session
+        put :update, {id: @post.to_param, section_id: @post.section.to_param, post: new_attributes}, valid_session
         expect(assigns(:post)).to eq(@post)
       end
 
@@ -150,21 +154,6 @@ RSpec.describe PostsController, :type => :controller do
         put :update, {id: @post.to_param, section_id: @post.section.to_param, post: invalid_attributes}, valid_session
         expect(response).to render_template("edit")
       end
-    end
-  end
-
-  describe "DELETE destroy" do
-    login_user
-
-    it "destroys the requested post" do
-      expect {
-        delete :destroy, {:id => @post.to_param, section_id: @post.section.to_param}, valid_session
-      }.to change(Post, :count).by(-1)
-    end
-
-    it "redirects to the posts list" do
-      delete :destroy, {id: @post.to_param, section_id: @post.section.to_param}, valid_session
-      expect(response).to redirect_to(posts_url)
     end
   end
 
