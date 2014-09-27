@@ -36,7 +36,7 @@ RSpec.describe RepliesController, :type => :controller do
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { body: '' }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -91,12 +91,12 @@ RSpec.describe RepliesController, :type => :controller do
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved reply as @reply" do
-        post :create, {:reply => invalid_attributes}, valid_session
+        post :create, {:reply => invalid_attributes, post_id: @post.to_param}, valid_session
         expect(assigns(:reply)).to be_a_new(Reply)
       end
 
       it "re-renders the 'new' template" do
-        post :create, {:reply => invalid_attributes}, valid_session
+        post :create, {:reply => invalid_attributes, post_id: @post.to_param}, valid_session
         expect(response).to render_template("new")
       end
     end
@@ -136,15 +136,19 @@ RSpec.describe RepliesController, :type => :controller do
     describe "with invalid params" do
       login_user
 
+      before(:each) do
+        @reply.update_attribute(:user_id, User.first.id)
+      end
+
       it "assigns the reply as @reply" do
-        reply = Reply.create! valid_attributes
-        put :update, {:id => reply.to_param, :reply => invalid_attributes}, valid_session
-        expect(assigns(:reply)).to eq(reply)
+        # @reply = Reply.create! valid_attributes
+        put :update, {:id => @reply.to_param, post_id: @post.to_param, :reply => invalid_attributes}, valid_session
+        expect(assigns(:reply)).to eq(@reply)
       end
 
       it "re-renders the 'edit' template" do
         reply = Reply.create! valid_attributes
-        put :update, {:id => reply.to_param, :reply => invalid_attributes}, valid_session
+        put :update, {:id => @reply.to_param, post_id: @post.to_param, :reply => invalid_attributes}, valid_session
         expect(response).to render_template("edit")
       end
     end
